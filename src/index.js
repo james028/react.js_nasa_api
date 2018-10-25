@@ -1,5 +1,7 @@
 import ReactDOM from "react-dom";
 import axios from "axios";
+import Details from "./components/details";
+import Form from "./components/form";
 
 import "./styles.css";
 
@@ -8,38 +10,39 @@ import React, { Component } from "react";
 export default class App extends Component {
   state = {
     results: [],
-    value: ""
-  };
-
-  onChangeInput = e => {
-    this.setState({
-      valueInput: e.target.value
-    });
+    isLoading: false
   };
 
   getResults = e => {
     e.preventDefault();
     const user = e.target.elements.valueInput.value;
 
-    axios.get(`https://images-api.nasa.gov/search?q=${user}`).then(res => {
-      console.log(res.data.collection.items[0].data[0]);
-      this.setState({
-        results: res.data.collection.items
-      });
-    });
+    this.setState({ isLoading: true });
+    axios
+      .get(`https://images-api.nasa.gov/search?q=${user}&media_type=image`)
+      .then(res => {
+        console.log(res.data.collection.items);
+        this.setState({
+          results: res.data.collection.items,
+          isLoading: false
+        });
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
+    if (this.state.isLoading) {
+      return <div className="lds-dual-ring" />;
+    }
+
+    const details = this.state.results.map((e, i) => {
+      return <Details key={i} result={e} />;
+    });
+
     return (
       <div className="App">
-        <h2>Searching from API NASA</h2>
-        <form onSubmit={this.getResults}>
-          <input name="valueInput" />
-          <input type="submit" value="Submit" />
-        </form>
-        {this.state.results.map((e, i) => {
-          return <div key={i}>{e.data[0].title}</div>;
-        })}
+        <Form getResults={this.getResults} />
+        <div class="details-grid">{details}</div>
       </div>
     );
   }
