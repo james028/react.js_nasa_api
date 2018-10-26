@@ -9,6 +9,7 @@
   justify-content: center;
 }
 .detail {
+  border-radius: 3px;
   padding-bottom: 50px;
   margin-bottom: 50px;
   margin-right: 20px;
@@ -28,12 +29,14 @@
   -o-transform-origin: center;
   transform-origin: center;
 }
-.img {
+.img,
+.img-detail {
   width: 300px;
   height: 250px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 3px;
 }
 .detail-title {
   font-weight: bold;
@@ -42,31 +45,43 @@
   margin: 0 auto;
   padding-top: 30px;
 }
-.lds-dual-ring {
+.lds-facebook {
   display: inline-block;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 20%;
   transform: translate(-50%, -50%);
 }
-.lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 120px;
-  height: 120px;
-  margin: 1px;
-  border-radius: 50%;
-  border: 5px solid rgb(26, 65, 85);
-  border-color: rgb(26, 65, 85) transparent rgb(26, 65, 85) transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: rgb(15, 3, 70);
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
-@keyframes lds-dual-ring {
+.lds-facebook div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
   0% {
-    transform: rotate(0deg);
+    top: 6px;
+    height: 51px;
   }
+  50%,
   100% {
-    transform: rotate(360deg);
+    top: 19px;
+    height: 26px;
   }
 }

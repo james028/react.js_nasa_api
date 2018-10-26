@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles.css";
+import { Link } from "react-router-dom";
 
 class Details extends Component {
   render() {
@@ -10,7 +11,17 @@ class Details extends Component {
     return (
       <div className="detail">
         <div className="img" style={stlBack} />
-        <div class="detail-title">{this.props.result.data[0].title}</div>
+        <div className="detail-title">{this.props.result.data[0].title}</div>
+        <button className="detail-btn">
+          <Link
+            to={{
+              pathname: `/detail/${this.props.result.data[0].nasa_id}`,
+              state: { detail: this.props.result.data[0].title }
+            }}
+          >
+            View
+          </Link>
+        </button>
       </div>
     );
   }
