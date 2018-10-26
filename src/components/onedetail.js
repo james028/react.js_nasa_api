@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class OneDetail extends Component {
   state = {
@@ -25,19 +26,35 @@ class OneDetail extends Component {
 
   render() {
     //console.log(this.props);
+    const image = this.state.onePicture.map((e, i) => {
+      return (
+        <div className="img-detail" key={i}>
+          <img src={e.href} alt={e.rel} />
+        </div>
+      );
+    });
+
     return (
       <div>
-        <div>
-          {this.state.onePicture.map((e, i) => {
-            return (
-              <div className="img-detail" key={i}>
-                <img src={e.href} />
-              </div>
-            );
-          })}
-          {this.state.oneResult.map((e, i) => {
-            return <div key={i}>{e.description}</div>;
-          })}
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              {image}
+              {this.state.oneResult.map((e, i) => {
+                return (
+                  <div key={i}>
+                    <h4>{e.title}</h4>
+                    <div className="detail-description">
+                      Description: {e.description}
+                    </div>
+                  </div>
+                );
+              })}
+              <button className="btn-one-detail">
+                <Link to="/">Go home</Link>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

@@ -19,7 +19,7 @@ class Details extends Component {
               state: { detail: this.props.result.data[0].title }
             }}
           >
-            View
+            View details
           </Link>
         </button>
       </div>

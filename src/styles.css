@@ -1,23 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
   font-family: sans-serif;
   text-align: center;
 }
+.form {
+  background-color: rgb(59, 45, 45);
+  color: #fff;
+  padding: 30px 0 50px;
+}
 .details-grid {
   display: flex;
   flex-wrap: wrap;
-  margin: 100px 20px;
   justify-content: center;
+  padding: 100px 20px;
 }
 .detail {
   border-radius: 3px;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   margin-bottom: 50px;
   margin-right: 20px;
-  cursor: pointer;
   background-color: rgb(182, 204, 226);
   -webkit-transition: -webkit-transform 0.5s ease;
   -moz-transition: -moz-transform 0.5s ease;
   transition: transform 0.5s ease;
+  position: relative;
 }
 .detail:hover {
   -webkit-transform: scale(1.09);
@@ -29,8 +39,19 @@
   -o-transform-origin: center;
   transform-origin: center;
 }
-.img,
-.img-detail {
+.input {
+  font-size: 16px;
+  border-style: solid;
+  padding: 11px;
+  border-color: #000000;
+  border-width: 3px;
+  margin-top: 20px;
+}
+
+.input:focus {
+  outline: none;
+}
+.img {
   width: 300px;
   height: 250px;
   background-size: cover;
@@ -38,12 +59,21 @@
   background-repeat: no-repeat;
   border-radius: 3px;
 }
+.img-detail img {
+  width: 600px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
 .detail-title {
   font-weight: bold;
   font-size: 16px;
   width: 200px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .lds-facebook {
   display: inline-block;
@@ -83,5 +113,70 @@
   100% {
     top: 19px;
     height: 26px;
+  }
+}
+.input-btn {
+  background-color: #c5d1c8;
+  border: 3px solid #005;
+  display: inline-block;
+  cursor: pointer;
+  color: #000;
+  margin-left: 10px;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 11px 30px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+.input-btn:hover {
+  background-color: #002;
+  color: #fff;
+}
+.input-btn:active {
+  position: relative;
+  top: 1px;
+}
+.detail-description {
+  margin: 40px 0 20px;
+}
+.btn-one-detail {
+  border: 3px solid rgb(219, 40, 16);
+  padding: 10px 25px;
+  text-transform: uppercase;
+}
+.btn-one-detail a {
+  text-decoration: none;
+  color: rgb(219, 40, 16);
+  font-weight: bold;
+}
+.detail-btn {
+  border: 3px solid rgb(219, 40, 16);
+  padding: 7px 20px;
+  text-transform: uppercase;
+  font-size: 12px;
+  position: absolute;
+  bottom: 10px;
+  left: calc(50% - 62px);
+}
+.detail-btn a {
+  text-decoration: none;
+  color: rgb(219, 40, 16);
+  font-weight: bold;
+}
+@media (max-width: 600px) {
+  .detail {
+    margin-right: 0;
+  }
+  .detail-grid {
+    padding: 40px 20px;
+  }
+  .img-detail img {
+    width: 100%;
+  }
+  .form h2 {
+    font-size: 1.5rem;
+  }
+  .form h6 {
+    font-size: 0.8rem;
   }
 }
